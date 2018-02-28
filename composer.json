@@ -1,0 +1,16 @@
+{
+    "name": "danielpereirabp/gerfin",
+    "description": "Gerenciador Financeiro, PHP OO",
+    "authors": [
+        {
+            "name": "Daniel Pereira",
+            "email": "danielpereirabp@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "GerFin\\": "src/"
+        }
+    }
+}
