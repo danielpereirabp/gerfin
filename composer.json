@@ -14,5 +14,8 @@
         "psr-4": {
             "GerFin\\": "src/"
         }
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.7"
     }
 }
