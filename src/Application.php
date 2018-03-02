@@ -4,7 +4,9 @@ namespace GerFin;
 
 use GerFin\Plugins\PluginInterface;
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Zend\Diactoros\Response\SapiEmitter;
 
 class Application
 {
@@ -58,6 +60,13 @@ class Application
         }
 
         $callable = $route->handler;
-        $callable($request);
+        $response = $callable($request);
+        $this->emitResponse($response);
+    }
+
+    protected function emitResponse(ResponseInterface $response)
+    {
+        $emmiter = new SapiEmitter();
+        $emmiter->emit($response);
     }
 }
