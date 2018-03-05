@@ -15,6 +15,7 @@ $app = new Application($serviceContainer);
 
 $app->plugin(new RoutePlugin());
 $app->plugin(new ViewPlugin());
+$app->plugin(new DbPlugin());
 
 $app->get('/home/{name}/{id}', function (ServerRequestInterface $request) {
     $response = new Response();
