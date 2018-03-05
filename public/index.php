@@ -2,8 +2,9 @@
 
 use GerFin\Application;
 use GerFin\ServiceContainer;
-use GerFin\Plugins\ViewPlugin;
+use GerFin\Plugins\DbPlugin;
 use GerFin\Plugins\RoutePlugin;
+use GerFin\Plugins\ViewPlugin;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response;
@@ -25,7 +26,11 @@ $app->get('/home/{name}/{id}', function (ServerRequestInterface $request) {
 
 $app->get('/category-costs', function () use ($app) {
     $view = $app->service('view.renderer');
-    return $view->render('category-costs/list.html.twig');
+    $meuModel = new \GerFin\Models\CategoryCost();
+    $categories = $meuModel->all();
+    return $view->render('category-costs/list.html.twig', [
+        'categories' => $categories
+    ]);
 });
 
 $app->start();
